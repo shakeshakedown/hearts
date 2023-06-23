@@ -1,1 +1,50 @@
+{% extends "main.html" %}
+{% block title %}Hearts{% endblock %}
+
+{% block head %}
+{% endblock %}
+{% block content %}
+<form method="POST">
+    <div id="main">
+        <div id="namebox">
+            <h1>Hearts Scoring</h1>
+        </div>
+        <div class="vertical_line"></div>
+            <div id="inner">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="error_message">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <h2>Number of Players</h2>
+            <input type="radio" onclick="fourthPlayer(false);" name="num_players" value="3" id="three_player" checked />
+            <label for="three_player"><span>3</span></label>
+            <input type="radio" onclick="fourthPlayer(true);" name="num_players" value="4" id="four_player" />
+            <label for="four_player"><span>4</span></label>
+
+            <h2>Player Names</h2>
+            <p><input type="text" placeholder="Player 1" name="p1" /></p>
+            <p><input type="text" placeholder="Player 2" name="p2" /></p>
+            <p><input type="text" placeholder="Player 3" name="p3" /></p>
+            <p><input type="text" placeholder="Player 4" name="p4" id="p4" style="display: none;" /></p>
+
+            <h2>Max Score</h2>
+            <input type="text" name="max_points" placeholder="Min. of 26" />
+            <h2>Starting passing direction</h2>
+                <input type="radio" name="start_passing" value="left" id="left" checked />
+                <label for="left">←</label>
+                <input type="radio" name="start_passing" value="right" id="right" />
+                <label for="right">→</label>
+                <input type="radio" name="start_passing" value="across" id="across" style="display: none;" />
+                <label for="across" id="across-label" style="display:none;">↑</label>
+                <input type="radio" name="start_passing" value="hold" id="hold" />
+                <label for="hold">X</label>
+            <p><input type="submit" value="Start Game"></p>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
 

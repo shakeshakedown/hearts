@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% block title %}Hearts{% endblock %}
+
+{% block head %}
+{% endblock %}
+{% block content %}
+<div class="pyro">
+    <div class="before"></div>
+    <div class="after"></div>
+</div>
+    <div id="main">
+        <div id="namebox">
+            <h1>Winner!</h1>
+        </div>
+        <div class="vertical_line"></div>
+            <div id="inner">
+                {% if winners|length == 1 %}
+                    <h2>The winner was {{ winners[0].title() }}!</h2>
+                {% elif winners|length == 2 %}
+                    <h2>It was a tie!  The winners were {{ winners[0].title() }} & {{ winners[1].title() }}!</h2>
+                {% elif winners|length == 3%}
+                    <h2>It was a three way tie!  The winners were {{ winners[0].title() }}, {{ winners[1].title() }} & {{ winners[2].title() }}!</h2>
+                {% endif %}
+            <a href="/hearts">Play again?</a>
+        </div>
+    </div>
+{% endblock %}
+
+

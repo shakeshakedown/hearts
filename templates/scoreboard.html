@@ -1,0 +1,37 @@
+{% extends "main.html" %}
+{% block title %}Hearts{% endblock %}
+
+{% block head %}
+{% endblock %}
+{% block content %}
+<form method="POST" action="/hearts/addpoints">
+    <div id="main">
+        <div id="namebox">
+            <h1>Scoreboard</h1>
+        </div>
+        <div class="vertical_line"></div>
+            <div id="inner">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="error_message">{{ message }}</div>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+
+                <p>Passing: {{ current_pass.title() }}</p> 
+            {% for key in scores %}
+                <div class="player_block">
+                    <div class="block name">{{ scores[key][0].title() }}</div>
+                    <div class="block current_score">{{ scores[key][1][-1] }}</div>
+                    <div class="block score_input"><input placeholder="{{ scores[key][0].title() }}'s score" type="text" inputmode="numeric" name="{{ key }}s"></div>
+                </div>
+            {% endfor %}
+
+            <p><input type="submit" value="Add Points"></p>
+        </div>
+    </div>
+</form>
+{% endblock %}
+
+

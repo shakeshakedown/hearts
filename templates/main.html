@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/scoring.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='inc/favicon.png') }}">
+    <title>{% block title %}{% endblock %} Scoring</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript">
+      function fourthPlayer(show) {
+      if (show) {
+        document.getElementById('p4').style.display = 'inline-block';
+        document.querySelector('input[name="start_passing"][value="across"]').style.display = 'inline-block';
+        document.getElementById('across-label').style.display = 'inline-block';
+      } else {
+        document.getElementById('p4').style.display = 'none';
+        document.querySelector('input[name="start_passing"][value="across"]').style.display = 'none';
+        document.getElementById('across-label').style.display = 'none';
+      }
+
+      if (document.getElementById('three_player').checked) {
+        document.querySelector('input[name="start_passing"][value="left"]').checked = true;
+      }
+    }
+// Call the function on page load to hide the fourth player inputs
+fourthPlayer(false);
+    </script>
+</head>
+<body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+        {% block footer %}
+        {% endblock %}
+    </div>
+</body>
+</html>
