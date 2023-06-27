@@ -83,7 +83,6 @@ def scoreboard():
         # storing user input as temp_scores for validation
         for player, score in zip(range(1, session["num_players"]), points):
             session[f"p{player}"] = score
-
         session["temp_scores"] = {}
         for player in range(1, session["num_players"] + 1):
             key = f"p{player}"
@@ -155,5 +154,3 @@ def winner():
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# application = app
