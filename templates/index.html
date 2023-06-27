@@ -18,20 +18,21 @@
                     {% endfor %}
                 {% endif %}
             {% endwith %}
+
             <h2>Number of Players</h2>
-            <input type="radio" onclick="fourthPlayer(false);" name="num_players" value="3" id="three_player" checked />
+            <input type="radio" onclick="fourthPlayer(false);" name="num_players" value="3" id="three_player" {% if three_player_select == True %}checked{% endif %}/>
             <label for="three_player"><span>3</span></label>
-            <input type="radio" onclick="fourthPlayer(true);" name="num_players" value="4" id="four_player" />
+            <input type="radio" onclick="fourthPlayer(true);" name="num_players" value="4" id="four_player" {% if three_player_select == False %}checked{% endif %} />
             <label for="four_player"><span>4</span></label>
 
             <h2>Player Names</h2>
-            <p><input type="text" placeholder="Player 1" name="p1" /></p>
-            <p><input type="text" placeholder="Player 2" name="p2" /></p>
-            <p><input type="text" placeholder="Player 3" name="p3" /></p>
-            <p><input type="text" placeholder="Player 4" name="p4" id="p4" style="display: none;" /></p>
+            <p><input type="text" placeholder="Player 1" name="p1" {% if validation == True %}value="{{ p1_name_temp }}"{% endif %} /></p>
+            <p><input type="text" placeholder="Player 2" name="p2" {% if validation == True %}value="{{ p2_name_temp }}"{% endif %} /></p>
+            <p><input type="text" placeholder="Player 3" name="p3" {% if validation == True %}value="{{ p3_name_temp }}"{% endif %} /></p>
+            <p><input type="text" placeholder="Player 4" name="p4" id="p4" {% if three_player_select == True %}style="display: none;" {% endif %} {% if three_player_select == False and validation == True %}value="{{ p4_name_temp }}"{% endif %} /></p>
 
             <h2>Max Score</h2>
-            <input type="text" name="max_points" placeholder="Min. of 26" />
+            <input type="text" name="max_points" placeholder="Min. of 26" {% if validation == True%}value="{{ max_points_temp }}"{% endif %} />
             <h2>Starting passing direction</h2>
                 <input type="radio" name="start_passing" value="left" id="left" checked />
                 <label for="left">←</label>

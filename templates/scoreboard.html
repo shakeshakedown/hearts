@@ -4,7 +4,7 @@
 {% block head %}
 {% endblock %}
 {% block content %}
-<form method="POST" action="/hearts/addpoints">
+<form method="POST">
     <div id="main">
         <div id="namebox">
             <h1>Scoreboard</h1>
@@ -24,7 +24,12 @@
                 <div class="player_block">
                     <div class="block name">{{ scores[key][0].title() }}</div>
                     <div class="block current_score">{{ scores[key][1][-1] }}</div>
-                    <div class="block score_input"><input placeholder="{{ scores[key][0].title() }}'s score" type="text" inputmode="numeric" name="{{ key }}s"></div>
+                    <div class="block score_input"><input placeholder="{{ scores[key][0].title() }}'s score"
+                        {% if validation == True %}
+                            value="{{ temp_scores[key] }}"
+                        {% endif %}
+                        type="text" inputmode="numeric" name="{{ key }}s"
+                    ></div>
                 </div>
             {% endfor %}
 
