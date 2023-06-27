@@ -6,3 +6,11 @@ Hearts is a trick-taking card game played with a deck of 52 cards.
 It is three or four players and the goal of the game is to have the lowest score at the end of the game.
 
 This Flask app helps players keep track of their scores.
+
+This features:
+- responsive CSS
+- validation with error messages
+- persistance through errors (keeps user input throughout)
+
+Live version at:
+https://www.tedmonahan.com/hearts
